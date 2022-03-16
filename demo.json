@@ -1,0 +1,757 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sample Third Party Collection Copy",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    
+    {
+      "url": "http://baryonlimsbackend-env.eba-maju4xsi.ca-central-1.elasticbeanstalk.com/api",
+      "variables": {}
+    }
+   
+  ],
+  "paths": {
+    "/token//": {
+      "post": {
+        "tags": [
+          "obtain client id and secret"
+        ],
+        "summary": "Step 1",
+        "operationId": "Step1",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "username",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "case sensitive usernameadmin",
+                    "example": "admin"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "case sensitive password",
+                    "example": "admin"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Wed, 16 Mar 2022 07:23:17 GMT"
+                    },
+                    "example": "Wed, 16 Mar 2022 07:23:17 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "WSGIServer/0.2 CPython/3.8.0"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.8.0"
+                  }
+                }
+              },
+              "Vary": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Accept"
+                    },
+                    "example": "Accept"
+                  }
+                }
+              },
+              "Allow": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "POST, OPTIONS"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "DENY"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "483"
+                    },
+                    "example": "483"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "nosniff"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/example"
+                },
+                "example": {
+                  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1ODMwMTc5NywiaWF0IjoxNjQ3NDE1Mzk3LCJqdGkiOiI4ZGMwNTIyMjBiNDU0YWFhYmVhYTg5NjExYTI3MjYwMSIsInVzZXJfaWQiOjF9.sf83Q7TaZ7wotdG5W-U7axVR4-YWYhvvVjAObWou9Sk",
+                  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU4MzAxNzk3LCJpYXQiOjE2NDc0MTUzOTcsImp0aSI6ImRlYThhNjFkMjQwYzQzODc4ODg1ZDc2NWQ2MDc2NTVmIiwidXNlcl9pZCI6MX0.tHFgBhKadlw0bNt3OgDRo8NoQKAlc-OLzVtHEMaF9HM"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "servers": [
+          {
+            "url": "http://baryonlimsbackend-env.eba-maju4xsi.ca-central-1.elasticbeanstalk.com/api",
+            "variables": {}
+          }
+        ]
+      }
+    },
+    "/labpoint-access": {
+      "post": {
+        "tags": [
+          "obtain client id and secret"
+        ],
+        "summary": "Step 2",
+        "operationId": "Step2",
+        "parameters": [
+          {
+            "name": "client-id",
+            "in": "header",
+            "description": "provided client ID",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "provided API Key",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Wed, 16 Mar 2022 07:23:17 GMT"
+                    },
+                    "example": "Wed, 16 Mar 2022 07:23:17 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "WSGIServer/0.2 CPython/3.8.0"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.8.0"
+                  }
+                }
+              },
+              "Vary": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Accept"
+                    },
+                    "example": "Accept"
+                  }
+                }
+              },
+              "Allow": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "POST, OPTIONS"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "DENY"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "483"
+                    },
+                    "example": "483"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "nosniff"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/example"
+                },
+                "example": {
+                  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1ODMwMTc5NywiaWF0IjoxNjQ3NDE1Mzk3LCJqdGkiOiI4ZGMwNTIyMjBiNDU0YWFhYmVhYTg5NjExYTI3MjYwMSIsInVzZXJfaWQiOjF9.sf83Q7TaZ7wotdG5W-U7axVR4-YWYhvvVjAObWou9Sk",
+                  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU4MzAxNzk3LCJpYXQiOjE2NDc0MTUzOTcsImp0aSI6ImRlYThhNjFkMjQwYzQzODc4ODg1ZDc2NWQ2MDc2NTVmIiwidXNlcl9pZCI6MX0.tHFgBhKadlw0bNt3OgDRo8NoQKAlc-OLzVtHEMaF9HM"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "http://baryonlimsbackend-env.eba-maju4xsi.ca-central-1.elasticbeanstalk.com/api",
+            "variables": {}
+          }
+        ]
+      }
+    },
+    "/token/refresh": {
+      "post": {
+        "tags": [
+          "token Copy"
+        ],
+        "summary": "reresh token",
+        "operationId": "rereshtoken",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {},
+              "schema": {
+                "required": [
+                  "refresh"
+                ],
+                "type": "object",
+                "properties": {
+                  "refresh": {
+                    "type": "string",
+                    "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0NzQyMywiaWF0IjoxNjQzMzQ2NjIzLCJqdGkiOiIzNTU3MGQyY2Y4YTE0N2IyOGMzNzQyYjAxMGQ4ZWNjYSIsInVzZXJfaWQiOjJ9.RpRvGqAgUjRI7fuIlxXIlneC5O9_KQFwI7-azQ2pi90"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Fri, 28 Jan 2022 05:11:42 GMT"
+                    },
+                    "example": "Fri, 28 Jan 2022 05:11:42 GMT"
+                  }
+                }
+              },
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "WSGIServer/0.2 CPython/3.8.10"
+                    },
+                    "example": "WSGIServer/0.2 CPython/3.8.10"
+                  }
+                }
+              },
+              "Vary": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "Accept"
+                    },
+                    "example": "Accept"
+                  }
+                }
+              },
+              "Allow": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "POST, OPTIONS"
+                    },
+                    "example": "POST, OPTIONS"
+                  }
+                }
+              },
+              "X-Frame-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "DENY"
+                    },
+                    "example": "DENY"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "483"
+                    },
+                    "example": "483"
+                  }
+                }
+              },
+              "X-Content-Type-Options": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "nosniff"
+                    },
+                    "example": "nosniff"
+                  }
+                }
+              },
+              "Referrer-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              },
+              "Cross-Origin-Opener-Policy": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string",
+                      "example": "same-origin"
+                    },
+                    "example": "same-origin"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/rereshtoken"
+                },
+                "example": {
+                  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ3NTAyLCJpYXQiOjE2NDMzNDY2MjMsImp0aSI6ImE5NTkwMjJkOTcxNzRlMzhhZjU0M2Y2ZDgyNDJlMTEyIiwidXNlcl9pZCI6Mn0.aZKI5scXaSAXHXFesSu3aMkLDGptSoVHt2CVAX5H9ak",
+                  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0NzUwMiwiaWF0IjoxNjQzMzQ2NzAyLCJqdGkiOiJmZWRiZDNiMzFjZjg0YjNlOWE0ZmQxMzkwYzg3NTM1NCIsInVzZXJfaWQiOjJ9.ZDoBEZO0RWYX9sbqC7zxii0k753wMlp7Tsu8g3uIljY"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "servers": [
+          {
+            "url": "http://127.0.0.1:8000/api",
+            "variables": {}
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "example": {
+        "title": "example",
+        "required": [
+          "refresh",
+          "access"
+        ],
+        "type": "object",
+        "properties": {
+          "refresh": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1ODMwMTc5NywiaWF0IjoxNjQ3NDE1Mzk3LCJqdGkiOiI4ZGMwNTIyMjBiNDU0YWFhYmVhYTg5NjExYTI3MjYwMSIsInVzZXJfaWQiOjF9.sf83Q7TaZ7wotdG5W-U7axVR4-YWYhvvVjAObWou9Sk",
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU4MzAxNzk3LCJpYXQiOjE2NDc0MTUzOTcsImp0aSI6ImRlYThhNjFkMjQwYzQzODc4ODg1ZDc2NWQ2MDc2NTVmIiwidXNlcl9pZCI6MX0.tHFgBhKadlw0bNt3OgDRo8NoQKAlc-OLzVtHEMaF9HM"
+        }
+      },
+      "gettoken": {
+        "title": "gettoken",
+        "required": [
+          "refresh",
+          "access",
+          "username",
+          "email",
+          "is_doctor",
+          "is_superuser",
+          "is_lab_manager",
+          "lab"
+        ],
+        "type": "object",
+        "properties": {
+          "refresh": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "is_doctor": {
+            "type": "boolean"
+          },
+          "is_superuser": {
+            "type": "boolean"
+          },
+          "is_lab_manager": {
+            "type": "boolean"
+          },
+          "lab": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0NzQyMywiaWF0IjoxNjQzMzQ2NjIzLCJqdGkiOiIzNTU3MGQyY2Y4YTE0N2IyOGMzNzQyYjAxMGQ4ZWNjYSIsInVzZXJfaWQiOjJ9.RpRvGqAgUjRI7fuIlxXIlneC5O9_KQFwI7-azQ2pi90",
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ3NDIzLCJpYXQiOjE2NDMzNDY2MjMsImp0aSI6ImFlZWYzYTlmOTkwZDQ4NDBhOTM3YzI5YjhjMDQ3MGUzIiwidXNlcl9pZCI6Mn0.I_PhxPqDerRfWGd1nvt_wpDdORO8iKHAtnkEzAvp4TA",
+          "username": "test_lab_manager_1",
+          "email": "test_lab_manager_1@gmail.com",
+          "is_doctor": false,
+          "is_superuser": false,
+          "is_lab_manager": true,
+          "lab": 1
+        }
+      },
+      "rereshtoken": {
+        "title": "rereshtoken",
+        "required": [
+          "access",
+          "refresh"
+        ],
+        "type": "object",
+        "properties": {
+          "access": {
+            "type": "string"
+          },
+          "refresh": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ3NTAyLCJpYXQiOjE2NDMzNDY2MjMsImp0aSI6ImE5NTkwMjJkOTcxNzRlMzhhZjU0M2Y2ZDgyNDJlMTEyIiwidXNlcl9pZCI6Mn0.aZKI5scXaSAXHXFesSu3aMkLDGptSoVHt2CVAX5H9ak",
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0NzUwMiwiaWF0IjoxNjQzMzQ2NzAyLCJqdGkiOiJmZWRiZDNiMzFjZjg0YjNlOWE0ZmQxMzkwYzg3NTM1NCIsInVzZXJfaWQiOjJ9.ZDoBEZO0RWYX9sbqC7zxii0k753wMlp7Tsu8g3uIljY"
+        }
+      },
+      "admin-profile": {
+        "title": "admin-profile",
+        "required": [
+          "refresh",
+          "access",
+          "username",
+          "email",
+          "is_doctor",
+          "is_superuser",
+          "is_lab_manager",
+          "lab"
+        ],
+        "type": "object",
+        "properties": {
+          "refresh": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "is_doctor": {
+            "type": "boolean"
+          },
+          "is_superuser": {
+            "type": "boolean"
+          },
+          "is_lab_manager": {
+            "type": "boolean"
+          },
+          "lab": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0NzkxOCwiaWF0IjoxNjQzMzQ3MTE4LCJqdGkiOiIyMDRjZjc0M2QzZmM0MDVmYmZmNmVhYTJiZjkyYTZjZSIsInVzZXJfaWQiOjF9.TMuiJascZ88ns081xBQLE9nab1YJ11flZh80JFEHxiI",
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ3OTE4LCJpYXQiOjE2NDMzNDcxMTgsImp0aSI6ImRkNDI0NTZmMmM4YTRkZThhZGRiMTdlNWRmNjIzMTA1IiwidXNlcl9pZCI6MX0.0IMJpo1-QwqiRZCGHRdFPYrens-9PNKIFY0qVG6iVvg",
+          "username": "admin",
+          "email": "admin@m.com",
+          "is_doctor": false,
+          "is_superuser": true,
+          "is_lab_manager": false,
+          "lab": null
+        }
+      },
+      "lab-manger-profile": {
+        "title": "lab-manger-profile",
+        "required": [
+          "refresh",
+          "access",
+          "username",
+          "email",
+          "is_doctor",
+          "is_superuser",
+          "is_lab_manager",
+          "lab"
+        ],
+        "type": "object",
+        "properties": {
+          "refresh": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "is_doctor": {
+            "type": "boolean"
+          },
+          "is_superuser": {
+            "type": "boolean"
+          },
+          "is_lab_manager": {
+            "type": "boolean"
+          },
+          "lab": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0ODEwMiwiaWF0IjoxNjQzMzQ3MzAyLCJqdGkiOiI4YjgzM2MwZjk2YTY0ZTRkOGQ4YzQ5NDU1NWE2ZDZkZCIsInVzZXJfaWQiOjJ9._NhPyXCCe1B93qIcvuItkf0HUGP3TvDlfgUljmo2LEk",
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ4MTAyLCJpYXQiOjE2NDMzNDczMDIsImp0aSI6IjcwZjk3MDhmMjI5MzRlYjg5ZWZjZGIxNGU1ODNlNTY0IiwidXNlcl9pZCI6Mn0.wHV-oPX2w6kpTvwaDt4SptXL5BR00Apgb7R8AAtozig",
+          "username": "test_lab_manager_1",
+          "email": "test_lab_manager_1@gmail.com",
+          "is_doctor": false,
+          "is_superuser": false,
+          "is_lab_manager": true,
+          "lab": 1
+        }
+      },
+      "doctor-profile": {
+        "title": "doctor-profile",
+        "required": [
+          "refresh",
+          "access",
+          "username",
+          "email",
+          "is_doctor",
+          "is_superuser",
+          "is_lab_manager",
+          "lab"
+        ],
+        "type": "object",
+        "properties": {
+          "refresh": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "is_doctor": {
+            "type": "boolean"
+          },
+          "is_superuser": {
+            "type": "boolean"
+          },
+          "is_lab_manager": {
+            "type": "boolean"
+          },
+          "lab": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTk1ODQ0ODAxOCwiaWF0IjoxNjQzMzQ3MjE4LCJqdGkiOiJhNThlNGZmNzNiZjA0M2RkYWUzMTE5NmIxYTI5MGFmMSIsInVzZXJfaWQiOjN9.nTpQbiEWhaVd_A5YTQmRH1kKGF6f9rAGnfirzO8iB9U",
+          "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxOTU4NDQ4MDE4LCJpYXQiOjE2NDMzNDcyMTgsImp0aSI6ImVkMmU4Y2I3ZTYwMjRkNDZhZWM5YTg5YzhlZWM0ZDgwIiwidXNlcl9pZCI6M30.dW5tEo9n8DRGh9eb472HbN0_Or3BZWNlqHiIkZnTzzI",
+          "username": "test_doctor_1",
+          "email": "test_doctor_1@gmail.com",
+          "is_doctor": true,
+          "is_superuser": false,
+          "is_lab_manager": false,
+          "lab": null
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "obtain client id and secret"
+    },
+    {
+      "name": "token Copy"
+    }
+  ]
+}
