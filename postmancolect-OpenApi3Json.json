@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://127.0.0.0:8000/api",
+      "url": "http://example.com/api",
       "variables": {}
     }
   ],
