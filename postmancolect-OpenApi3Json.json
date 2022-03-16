@@ -237,10 +237,7 @@
       }
     },
     "securitySchemes": {
-      "bearer": {
-        "type": "http",
-        "scheme": "bearer"
-      }
+      
     }
   },
   "security": [],
