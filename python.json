@@ -1,0 +1,175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Sample Third Party Collection",
+    "contact": {}
+  },
+  "host": "example.com",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "obtain client id and secret"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [],
+  "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "obtain client id and secret"
+        ],
+        "summary": "Step 1",
+        "operationId": "Step1",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "description": "case sensitive usernameadmin",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "case sensitive password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [],
+        "deprecated": false,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "examples": {
+              "application/json": {
+                "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1ODMwMTc5NywiaWF0IjoxNjQ3NDE1Mzk3LCJqdGkiOiI4ZGMwNTIyMjBiNDU0YWFhYmVhYTg5NjExYTI3MjYwMSIsInVzZXJfaWQiOjF9.sf83Q7TaZ7wotdG5W-U7axVR4-YWYhvvVjAObWou9Sk",
+                "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU4MzAxNzk3LCJpYXQiOjE2NDc0MTUzOTcsImp0aSI6ImRlYThhNjFkMjQwYzQzODc4ODg1ZDc2NWQ2MDc2NTVmIiwidXNlcl9pZCI6MX0.tHFgBhKadlw0bNt3OgDRo8NoQKAlc-OLzVtHEMaF9HM"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 16 Mar 2022 07:23:17 GMT"
+              },
+              "Server": {
+                "type": "string",
+                "default": "WSGIServer/0.2 CPython/3.8.0"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Accept"
+              },
+              "Allow": {
+                "type": "string",
+                "default": "POST, OPTIONS"
+              },
+              "X-Frame-Options": {
+                "type": "string",
+                "default": "DENY"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "483"
+              },
+              "X-Content-Type-Options": {
+                "type": "string",
+                "default": "nosniff"
+              },
+              "Referrer-Policy": {
+                "type": "string",
+                "default": "same-origin"
+              },
+              "Cross-Origin-Opener-Policy": {
+                "type": "string",
+                "default": "same-origin"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/example"
+            }
+          }
+        }
+      }
+    },
+    "/labpoint-access": {
+      "post": {
+        "tags": [
+          "obtain client id and secret"
+        ],
+        "summary": "Step 2",
+        "operationId": "Step2",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "client-id",
+            "in": "header",
+            "description": "provided client ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "provided API Key",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "deprecated": false,
+        "responses": {
+          "default": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {},
+  "definitions": {
+    "example": {
+      "type": "object",
+      "required": [
+        "access",
+        "refresh"
+      ],
+      "properties": {
+        "refresh": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        }
+      },
+      "title": "example",
+      "example": {
+        "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1ODMwMTc5NywiaWF0IjoxNjQ3NDE1Mzk3LCJqdGkiOiI4ZGMwNTIyMjBiNDU0YWFhYmVhYTg5NjExYTI3MjYwMSIsInVzZXJfaWQiOjF9.sf83Q7TaZ7wotdG5W-U7axVR4-YWYhvvVjAObWou9Sk",
+        "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU4MzAxNzk3LCJpYXQiOjE2NDc0MTUzOTcsImp0aSI6ImRlYThhNjFkMjQwYzQzODc4ODg1ZDc2NWQ2MDc2NTVmIiwidXNlcl9pZCI6MX0.tHFgBhKadlw0bNt3OgDRo8NoQKAlc-OLzVtHEMaF9HM"
+      }
+    }
+  }
+}
